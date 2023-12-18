@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .title-1 {
+    @apply text-[2.375rem] font-[500];
+  }
+
+  .title-2 {
+    @apply text-[2rem] font-[600];
+  }
+
+  .title-3 {
+    @apply text-[2rem] font-[500];
+  }
+  .title-4 {
+    @apply text-[1.125rem] font-[700] leading-6;
+  }
+
+  .link-1 {
+    @apply text-[0.875rem] font-[600];
+  }
+  .link-2 {
+    @apply text-[0.8125rem] font-[400];
+  }
+  .link-3 {
+    @apply text-[0.75rem] font-[400];
+  }
+
+  .body-1 {
+    @apply text-[0.8125rem] font-[300];
+  }
+
+  .body-2 {
+    @apply text-[0.875rem] font-[400] leading-5;
+  }
+
+  .body-3 {
+    @apply text-[1rem] font-[300] leading-8;
+  }
+
+  .sub-title {
+    @apply text-[1rem] font-[300] leading-5;
+  }
+}
