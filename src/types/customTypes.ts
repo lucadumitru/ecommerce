@@ -15,7 +15,16 @@ export type Products = Product[];
 
 export interface CartProduct extends Product {
   quantity: number;
-  totalValue: number;
+  subTotal: number;
 }
 
-export type CartProducts = CartProduct[];
+export type CartProducts = {
+  products: CartProduct[];
+  orderTotal: number;
+};
+
+export type TInfoItem = {
+  icon: StaticImageData | string;
+  label: string;
+  text: string;
+};

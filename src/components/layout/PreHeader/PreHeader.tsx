@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { ShopInfo } from "@/components";
-import { Container, FacebookIcon, InstagramIcon } from "@/components/ui";
+import { ShopInfo, Socials } from "@/components";
+import { Container } from "@/components/ui";
 
 export const PreHeader = () => (
   <div className="bg-black">
@@ -28,12 +28,7 @@ export const PreHeader = () => (
               (00) 1234 5678
             </Link>
           </div>
-          <Link className="group" href="!#">
-            <FacebookIcon className="transition-all group-hover:text-dark-gray" />
-          </Link>
-          <Link className="group" href="!#">
-            <InstagramIcon className="transition-all group-hover:text-dark-gray" />
-          </Link>
+          <Socials />
         </div>
       </div>
     </Container>

@@ -31,6 +31,7 @@ module.exports = {
   },
   plugins: ["@next/eslint-plugin-next", "prettier", "jest"],
   rules: {
+    "@typescript-eslint/await-thenable": "off",
     "@typescript-eslint/no-shadow": 0,
     "@typescript-eslint/consistent-type-imports": [
       "error",

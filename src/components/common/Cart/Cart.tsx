@@ -23,11 +23,8 @@ export const Cart: React.FC<CartProps> = ({ cartProducts }) => {
   const [cartOpen, setCartOpen] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const totalProducts = cartProducts
-    ? cartProducts.reduce((acc, product) => acc + product.quantity, 0)
-    : 0;
-  const subTotal = cartProducts
-    ? cartProducts.reduce((acc, product) => acc + product.totalValue, 0)
+  const totalProducts = cartProducts.products
+    ? cartProducts.products.reduce((acc, product) => acc + product.quantity, 0)
     : 0;
   const pathName = usePathname();
   const cartPath = pathName.includes("cart");
@@ -96,7 +93,7 @@ export const Cart: React.FC<CartProps> = ({ cartProducts }) => {
                   <span>{totalProducts}</span> items in cart
                 </div>
               </div>
-              {!!cartProducts.length && (
+              {!!cartProducts.products && cartProducts.products.length > 0 && (
                 <div className="mt-5">
                   <ButtonLink href="/cart" variant="outline">
                     View or edit your cart
@@ -105,14 +102,18 @@ export const Cart: React.FC<CartProps> = ({ cartProducts }) => {
               )}
             </div>
             <ul className="flex flex-col divide-y overflow-scroll ">
-              {cartProducts.map((product) => (
-                <CartItem key={product.id} cartProduct={product} />
-              ))}
+              {cartProducts.products &&
+                cartProducts.products.map((product) => (
+                  <CartItem key={product.id} cartProduct={product} variant="small" />
+                ))}
             </ul>
-            {cartProducts.length ? (
+            {cartProducts.products && cartProducts.products.length ? (
               <div className="px-7 py-5">
                 <div className="flex w-full items-center justify-center gap-1 text-[14px] font-semibold text-dark-gray">
-                  Subtotal: <span className="text-[18px] text-black ">${subTotal.toFixed(2)}</span>{" "}
+                  Order Total:{" "}
+                  <span className="text-[18px] text-black ">
+                    ${cartProducts.orderTotal.toFixed(2)}
+                  </span>{" "}
                 </div>
                 <div className="mt-3 flex flex-col gap-y-2">
                   <Button variant="solid">Go to Checkout</Button>

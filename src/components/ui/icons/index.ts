@@ -16,3 +16,6 @@ export * from "./EmptyCartIcon";
 export * from "./RemoveCartProductIcon";
 export * from "./StarIcon";
 export * from "./FavouriteIcon";
+export * from "./DiscountIcon";
+export * from "./AccountIcon";
+export * from "./SupportIcon";

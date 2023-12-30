@@ -33,7 +33,9 @@ export interface ButtonProps extends ReactTagProps<"button"> {
    * Class
    */
   className?: string;
-
+  /**
+   * Icon Mobikle off
+   */
   iconMobileOff?: boolean;
 }
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "@/assets/styles/globals.css";
 import { poppins } from "@/assets/fonts";
-import { Header, PreHeader } from "@/components/layout";
+import { Footer, Header, Info, PreHeader } from "@/components/layout";
 import StoreProvider from "@/store/StoreProvider";
 
 export const metadata: Metadata = {
@@ -11,12 +11,14 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html className={`${poppins.className} min-h-[450px] min-w-[375px]`} lang="en">
-    <body>
+  <html className={`${poppins.className}  h-screen min-h-[450px] min-w-[375px] `} lang="en">
+    <body className="flex h-full flex-col">
       <StoreProvider>
         <PreHeader />
         <Header />
         {children}
+        <Info bg="gray" />
+        <Footer />
       </StoreProvider>
     </body>
   </html>
