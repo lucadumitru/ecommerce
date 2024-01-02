@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { PaymentMethods, Socials } from "@/components";
+import { PaymentMethods, Socials, SubscribeForm } from "@/components/common";
 import { AccordionItem } from "@/components/common/Accordion/AccordionItem/AccordionItem";
 import { Container } from "@/components/ui";
 
@@ -192,11 +192,15 @@ export const Footer = () => (
   <footer className=" bg-black pt-[50px] text-white">
     <Container className="divide-[#353535] tablet:divide-y-[1px]">
       <div>
-        <div>Subscribe</div>
-        <div className="grid gap-x-2 gap-y-3 py-5 tablet:grid-flow-col">
+        <SubscribeForm
+          className="mb-[15px] tablet:mb-[45px] "
+          subTitle="Be the first to hear about the latest offers."
+          title="Sign Up To Our Newsletter."
+        />
+        <div className="mb-[15px] grid gap-x-4 gap-y-3 tablet:grid-flow-col">
           {footerLinks.map((footerLinksGroups, index) => (
-            <>
-              <div key={index} className="hidden tablet:block">
+            <div key={index}>
+              <div className="hidden tablet:block">
                 <h5 className="mb-3 text-[14px] font-bold text-gray-500">
                   {footerLinksGroups.label}
                 </h5>
@@ -212,9 +216,11 @@ export const Footer = () => (
               </div>
               <div className="block tablet:hidden">
                 <AccordionItem
+                  key={index}
+                  bodyClassName="pl-2"
                   title={footerLinksGroups.label}
                   body={
-                    <ul className="pb-3 text-[13px]">
+                    <ul className="flex flex-col gap-2 pb-3 text-[12px] font-light">
                       {footerLinksGroups.links.map((link, index) => (
                         <li key={index}>
                           <Link className="hover:underline" href={link.link}>
@@ -226,7 +232,7 @@ export const Footer = () => (
                   }
                 />
               </div>
-            </>
+            </div>
           ))}
         </div>
       </div>

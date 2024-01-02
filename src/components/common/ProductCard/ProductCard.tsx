@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import { Rating } from "react-simple-star-rating";
 
 import { PhoneIcon, TickIcon } from "@/components/ui/icons";
 import { addProduct } from "@/store/features/cart/cartSlice";
@@ -22,7 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const discountPrice = product.discountPrice?.toFixed(2);
   return (
     <article className="group relative flex flex-col gap-3 overflow-hidden p-6">
-      <div className="hover-hover:group-hover:visible hover-hover:opacity-0 hover-hover:group-hover:opacity-100 hover-hover:translate-x-10 hover-hover:group-hover:translate-x-0 absolute right-3 top-3 flex flex-col gap-1 transition">
+      <div className="absolute right-3 top-3 flex flex-col gap-1 transition hover-hover:translate-x-10 hover-hover:opacity-0 hover-hover:group-hover:visible hover-hover:group-hover:translate-x-0 hover-hover:group-hover:opacity-100">
         <FavouriteButton />
         <AddToCartButton product={product} onClick={() => dispatch(addProduct(product))} />
       </div>
@@ -47,14 +48,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </Link>
       </div>
       <div className="flex grow flex-col gap-3">
-        <div className="flex items-center justify-between gap-1">
-          <div>
-            {product.rating} <span>rating</span>
-          </div>
+        <div className="flex flex-wrap items-center justify-between gap-[2px]">
+          <Rating
+            allowFraction
+            readonly
+            className="mb-1"
+            initialValue={product.rating}
+            size={17}
+            SVGclassName="inline"
+          />
           <div className="text-[12px] text-dark-gray">Reviews ({product.reviews})</div>
         </div>
         <h5 className="grow text-[14px]">
-          <Link className="text-[#333] hover:text-[#000]" href="/">
+          <Link className="text-[#564747] hover:text-[#000]" href="/">
             {productName}
           </Link>
         </h5>

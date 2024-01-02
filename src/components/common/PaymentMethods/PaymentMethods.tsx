@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export type PaymentItem = {
@@ -12,8 +14,9 @@ interface PaymentMethodsProps {
 
 export const PaymentMethods: React.FC<PaymentMethodsProps> = ({ paymentItems, className }) => (
   <div className={`flex items-center justify-center gap-2 ${className?.length ? className : ""}`}>
-    {paymentItems.map((paymentItem) => (
+    {paymentItems.map((paymentItem, index) => (
       <Image
+        key={index}
         alt={`${paymentItem.label} img`}
         className=" h-[22px] w-[34px] object-contain"
         height={22}

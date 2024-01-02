@@ -6,3 +6,4 @@ export * from "./BreadCrumbs/BreadCrumbs";
 export * from "./Accordion/Accordion";
 export * from "./Socials/Socials";
 export * from "./PaymentMethods/PaymentMethods";
+export * from "./SubscribeForm/SubscribeForm";
