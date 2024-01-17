@@ -1,10 +1,11 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
+import Link from "next/link";
 import { useDispatch } from "react-redux";
 
 import { NumberInput, RemoveCartProductIcon } from "@/components/ui";
 import { deleteProduct } from "@/store/features/cart/cartSlice";
-import type { CartProduct } from "@/types";
+import type { CartProduct } from "@/store/features/cart/cartSlice";
 
 type CarItemVariants = "small" | "large";
 
@@ -44,7 +45,8 @@ export const CartItem: React.FC<CartItemProps> = ({ cartProduct, variant = "smal
         <div className={`${variant === "large" && "flex w-full gap-2 laptop:w-[40%]"}  `}>
           <Image
             alt="Cart item img"
-            src={cartProduct.imgUrl}
+            height={120}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${cartProduct.attributes.productPreviewImg.data.attributes.url}`}
             width={120}
             className={`${
               variant === "small"
@@ -53,24 +55,29 @@ export const CartItem: React.FC<CartItemProps> = ({ cartProduct, variant = "smal
             } object-contain `}
           />
           {variant === "large" && (
-            <h5 className="w-full text-[12px] mobile:text-[14px] laptop:max-w-[270px] laptop:text-base">
-              {cartProduct.name}
-            </h5>
+            <Link
+              className="w-full text-[12px] mobile:text-[14px] laptop:max-w-[270px] laptop:text-base"
+              href={`/${cartProduct.attributes.slug}`}
+            >
+              {cartProduct.attributes.name}
+            </Link>
           )}
         </div>
         <div className={classes({ variant })}>
           {variant === "small" && (
-            <h5>
-              {cartProduct.name.length >= 43
-                ? `${cartProduct.name.slice(0, 43)}...`
-                : cartProduct.name}
-            </h5>
+            <Link href={`/${cartProduct.attributes.slug}`}>
+              {cartProduct.attributes.name.length >= 43
+                ? `${cartProduct.attributes.name.slice(0, 43)}...`
+                : cartProduct.attributes.name}
+            </Link>
           )}
           <div className="grow font-semibold">
             {variant === "large" && (
               <div className="mb-2 block text-[12px] laptop:hidden">Price</div>
             )}
-            <div>${(cartProduct.discountPrice || cartProduct.price).toFixed(2)}</div>
+            <div>
+              ${(cartProduct.attributes.discountPrice || cartProduct.attributes.price).toFixed(2)}
+            </div>
           </div>
           {variant === "small" ? (
             <div>

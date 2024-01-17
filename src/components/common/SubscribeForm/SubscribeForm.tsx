@@ -38,6 +38,7 @@ export const SubscribeForm: React.FC<SubscribeFormProps> = ({
         <Input
           className="rounded-md border-2 border-white  bg-transparent"
           clearInput={clearInput}
+          inputClassName="placeholder:text-white"
           placeholder="Your Email"
           type="email"
           value={inputValue}

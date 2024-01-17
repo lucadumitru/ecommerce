@@ -1,7 +1,8 @@
 import { RoundButton } from "@/components/ui/buttons";
 import { CartIcon } from "@/components/ui/icons";
+import type { CartProduct } from "@/store/features/cart/cartSlice";
 import { useAppSelector } from "@/store/store";
-import type { CartProduct, Product } from "@/types";
+import type { Product } from "@/types";
 
 export const AddToCartButton = ({
   product,

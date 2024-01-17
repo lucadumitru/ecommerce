@@ -1,0 +1,10 @@
+query getNavLinks {
+  navLinks {
+    data {
+      id
+      attributes {
+        ...NavLinkFragment
+      }
+    }
+  }
+}

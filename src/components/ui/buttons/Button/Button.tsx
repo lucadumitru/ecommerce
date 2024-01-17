@@ -49,7 +49,7 @@ export const BUTTON_TEST_IDS = {
 };
 
 const button = cva(
-  "group inline-flex  whitespace-nowrap  w-full min-w-min items-center gap-2 justify-center rounded-[3.125rem] px-5 text-center font-semibold transition leading-normal text-[0.875rem] min-h-[2.313rem] capitalize",
+  "group inline-flex  whitespace-nowrap h-full w-full min-w-min items-center gap-2 justify-center rounded-[3.125rem] px-5 text-center font-semibold transition leading-normal text-[0.875rem] min-h-[2.313rem] capitalize",
   {
     variants: {
       variant: {

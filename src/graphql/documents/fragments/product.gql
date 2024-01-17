@@ -1,0 +1,24 @@
+fragment Product on Product {
+  name
+  price
+  discountPrice
+  productPreviewImg {
+    data {
+      id
+      attributes {
+        ...File
+      }
+    }
+  }
+  stock
+  slug
+  shortName
+  description
+  category {
+    data {
+      attributes {
+        ...Category
+      }
+    }
+  }
+}

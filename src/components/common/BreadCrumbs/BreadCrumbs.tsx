@@ -13,6 +13,7 @@ interface BreadCrumbsProps {
   listClasses?: string;
   activeClasses?: string;
   capitalizeLinks?: boolean;
+  customLinks?: string[];
 }
 
 export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
@@ -21,10 +22,14 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
   containerClasses = "flex items-center text-[14px] mb-2 tablet:mb-5",
   listClasses = "hover:underline",
   activeClasses = "text-blue",
-  capitalizeLinks = true
+  capitalizeLinks = true,
+  customLinks
 }) => {
   const paths = usePathname();
-  const pathNames = paths.split("/").filter((path) => path);
+  const pathNames = customLinks || paths.split("/").filter((path) => path);
+  function capitalizeWords(str: string) {
+    return str.replace(/\b\w/g, (char) => char.toUpperCase()).replace("-", " ");
+  }
   return (
     <div>
       <ol className={containerClasses}>
@@ -35,9 +40,7 @@ export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({
         {pathNames.map((link, index) => {
           const href = `/${pathNames.slice(0, index + 1).join("/")}`;
           const itemClasses = paths === href ? `${listClasses} ${activeClasses}` : listClasses;
-          const itemLink = capitalizeLinks
-            ? link[0].toUpperCase() + link.slice(1, link.length)
-            : link;
+          const itemLink = capitalizeLinks ? capitalizeWords(link) : link.replace("-", " ");
           return (
             <React.Fragment key={index}>
               <li className={itemClasses}>

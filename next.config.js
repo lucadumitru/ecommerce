@@ -1,16 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  // reactStrictMode: true,
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "**"
+        protocol: "https",
+        hostname: "***"
       }
     ]
   },
   compiler: {
-    removeConsole: { exclude: ["info", "error"] },
+    // removeConsole: { exclude: ["info", "error"] },
     reactRemoveProperties: { properties: ["^data-testid$"] }
   }
 };

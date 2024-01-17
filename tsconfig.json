@@ -23,7 +23,8 @@
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
       "@/utils/*": ["./src/utils/*"],
-      "@/assets/*": ["./src/assets/*"]
+      "@/assets/*": ["./src/assets/*"],
+      "@/graphql/*": ["./src/graphql/*"]
     }
   },
   "include": [
@@ -34,7 +35,9 @@
     ".prettierrc",
     "jest-setup.ts",
     "src/components/ui/icons/icons.stories.mdx",
-    "src/components/layout/PreHeader/Header"
+    "src/components/layout/PreHeader/Header",
+    "strapi/config/plugins.js",
+    "src/graphql/documents/queries/getNavLinks.gql"
   ],
   "exclude": ["node_modules"]
 }

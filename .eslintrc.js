@@ -31,6 +31,15 @@ module.exports = {
   },
   plugins: ["@next/eslint-plugin-next", "prettier", "jest"],
   rules: {
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        labelComponents: ["CustomInputLabel"],
+        labelAttributes: ["label"],
+        controlComponents: ["CustomInput"],
+        depth: 3
+      }
+    ],
     "@typescript-eslint/await-thenable": "off",
     "@typescript-eslint/no-shadow": 0,
     "@typescript-eslint/consistent-type-imports": [

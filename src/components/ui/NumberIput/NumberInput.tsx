@@ -10,14 +10,16 @@ interface NumberInputProps {
   startValue?: number;
   minValue?: number;
   maxValue?: number;
-  productId?: number;
+  productId?: string;
+  onValueChange?: (inputNumber: number) => void;
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
   startValue = 1,
   minValue = 1,
   maxValue = 99,
-  productId
+  productId,
+  onValueChange
 }) => {
   const [inputNumber, setInputNumber] = useState(startValue);
   const dispatch = useDispatch();
@@ -41,7 +43,10 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     if (productId) {
       dispatch(changeProductQty({ productId, quantity: inputNumber }));
     }
-  }, [inputNumber, dispatch, productId]);
+    if (onValueChange) {
+      onValueChange(inputNumber);
+    }
+  }, [inputNumber, dispatch, productId, onValueChange]);
 
   return (
     <div className="min-w-14 flex items-center rounded-[6px] bg-dark-white p-2">

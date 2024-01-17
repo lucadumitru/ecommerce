@@ -1,16 +1,29 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { CartProduct, CartProducts, Product } from "@/types";
+import type { Product } from "@/types";
+
+export interface CartProduct extends Product {
+  quantity: number;
+  subTotal: number;
+}
+
+type Action = {
+  product: Product;
+  quantity?: number;
+};
 
 interface CartState {
-  cartProducts: CartProducts;
+  cartProducts: {
+    products: CartProduct[];
+    orderTotal: number;
+  };
 }
 
 const initialState: CartState = {
   cartProducts: {
-    products: [],
-    orderTotal: 0
+    orderTotal: 0,
+    products: []
   }
 };
 
@@ -23,18 +36,20 @@ const cartSlice = createSlice({
   initialState,
   name: "cart",
   reducers: {
-    addProduct(state: CartState, action: PayloadAction<Product>) {
+    addProduct(state: CartState, action: PayloadAction<Action>) {
       const existingProduct = state.cartProducts.products.find(
-        (cartProduct) => cartProduct.id === action.payload.id
+        (cartProduct) => cartProduct.id === action.payload.product.id
       );
       if (existingProduct) {
         state.cartProducts.products = state.cartProducts.products.map((product) =>
-          product.id === action.payload.id
+          product.id === action.payload.product.id
             ? {
                 ...product,
-                quantity: product.quantity + 1,
+                quantity: product.quantity + (action.payload.quantity || 1),
                 subTotal:
-                  (action.payload.discountPrice || action.payload.price) * (product.quantity + 1)
+                  (action.payload.product.attributes.discountPrice ||
+                    action.payload.product.attributes.price) *
+                  (product.quantity + 1)
               }
             : product
         );
@@ -42,11 +57,11 @@ const cartSlice = createSlice({
         state.cartProducts.products = [
           ...state.cartProducts.products,
           {
-            ...action.payload,
-            quantity: 1,
-            subTotal: action.payload.discountPrice
-              ? action.payload.discountPrice
-              : action.payload.price
+            ...action.payload.product,
+            quantity: action.payload?.quantity || 1,
+            subTotal: action.payload.product.attributes.discountPrice
+              ? action.payload.product.attributes.discountPrice
+              : action.payload.product.attributes.price
           }
         ];
       }
@@ -54,7 +69,7 @@ const cartSlice = createSlice({
     },
     changeProductQty(
       state: CartState,
-      action: PayloadAction<{ productId: number; quantity: number }>
+      action: PayloadAction<{ productId: string; quantity: number }>
     ) {
       const productIndex = state.cartProducts.products.findIndex(
         (product) => product.id === action.payload.productId
@@ -65,21 +80,23 @@ const cartSlice = createSlice({
             ? {
                 ...product,
                 quantity: action.payload.quantity,
-                subTotal: (product.discountPrice || product.price) * action.payload.quantity
+                subTotal:
+                  (product.attributes.discountPrice || product.attributes.price) *
+                  action.payload.quantity
               }
             : product
         );
         state.cartProducts.orderTotal = calculateOrderTotal(state.cartProducts.products);
       }
     },
+    clearCart(state: CartState) {
+      state.cartProducts.products = [];
+      state.cartProducts.orderTotal = calculateOrderTotal(state.cartProducts.products);
+    },
     deleteProduct(state: CartState, action: PayloadAction<Product>) {
       state.cartProducts.products = state.cartProducts.products.filter(
         (product) => product.id !== action.payload.id
       );
-      state.cartProducts.orderTotal = calculateOrderTotal(state.cartProducts.products);
-    },
-    clearCart(state: CartState) {
-      state.cartProducts.products = [];
       state.cartProducts.orderTotal = calculateOrderTotal(state.cartProducts.products);
     }
   }

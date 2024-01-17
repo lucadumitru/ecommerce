@@ -16,7 +16,7 @@ export const PreHeader = () => (
           </span>
           <Link
             className="relative whitespace-nowrap text-white before:pointer-events-none before:absolute before:-bottom-1 before:h-0.5 before:w-full before:rounded-full before:bg-white before:transition-all hover:before:w-0"
-            href="!#"
+            href="/contact-us"
           >
             Contact Us
           </Link>

@@ -11,15 +11,12 @@ import {
   EmptyCartIcon,
   PayPalIcon
 } from "@/components/ui";
-import type { CartProducts } from "@/types";
+import { useAppSelector } from "@/store/store";
 
 import { CartItem } from "./CartItem/CartItem";
 
-interface CartProps {
-  cartProducts: CartProducts;
-}
-
-export const Cart: React.FC<CartProps> = ({ cartProducts }) => {
+export const Cart = () => {
+  const cartProducts = useAppSelector((state) => state.cartProducts.cartProducts);
   const [cartOpen, setCartOpen] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);

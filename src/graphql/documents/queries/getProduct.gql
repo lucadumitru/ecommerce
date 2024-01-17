@@ -1,0 +1,10 @@
+query getProduct($slug: String) {
+  products(filters: { slug: { eq: $slug } }) {
+    data {
+      id
+      attributes {
+        ...Product
+      }
+    }
+  }
+}

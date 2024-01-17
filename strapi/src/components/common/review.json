@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_common_reviews",
+  "info": {
+    "displayName": "Review",
+    "icon": "",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "reviewText": {
+      "type": "text"
+    },
+    "rating": {
+      "type": "integer",
+      "max": 0,
+      "min": 5,
+      "required": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

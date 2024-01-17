@@ -7,3 +7,6 @@ export * from "./Accordion/Accordion";
 export * from "./Socials/Socials";
 export * from "./PaymentMethods/PaymentMethods";
 export * from "./SubscribeForm/SubscribeForm";
+export * from "./NavLinks/NavLinks";
+export * from "./StockInfo/StockInfo";
+export * from "./ContactForm/ContactForm-reakt-hook-form";

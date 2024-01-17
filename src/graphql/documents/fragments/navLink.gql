@@ -1,0 +1,5 @@
+fragment NavLinkFragment on NavLink {
+  navLinks {
+    ...LinkFragment
+  }
+}

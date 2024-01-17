@@ -1,16 +1,15 @@
-"use client";
-
 import Link from "next/link";
 
-import { Cart } from "@/components/common";
+import { Cart, NavLinks } from "@/components/common";
 import { ButtonLink, Container, LogoIcon, Search, UserIcon } from "@/components/ui";
 import { BurgerMenuIcon } from "@/components/ui/icons/BurgerMenuIcon";
-import { useAppSelector } from "@/store/store";
+import { gql } from "@/graphql/client";
 
-export const Header = () => {
-  const cartProducts = useAppSelector((state) => state.cartProducts.cartProducts);
+export const Header = async () => {
+  const data2 = await gql.getNavLinks();
+  const { navLinks } = data2.navLinks.data[0].attributes;
   return (
-    <header className="laptop:border:ligh-gray  bg-dark-blue py-4 laptop:border-b laptop:bg-white ">
+    <header className="bg-dark-blue  py-4 laptop:border-b laptop:border-light-gray laptop:bg-white ">
       <Container>
         <div className="relative flex items-center justify-between gap-2">
           <div className="ml-2 mr-5 laptop:hidden">
@@ -24,15 +23,7 @@ export const Header = () => {
           </Link>
           <div className="relative flex grow items-center pl-2 pr-16 laptop:h-[60px]">
             <nav className="hidden items-center gap-x-5 laptop:flex">
-              <ul className="flex flex-wrap gap-x-6 font-semibold">
-                <li>Laptops</li>
-                <li>Desktop PCs</li>
-                <li>Networking Devices</li>
-                <li>Printers & Scanners</li>
-                <li>PC Parts</li>
-                <li>All Other Products</li>
-                <li>Repairs</li>
-              </ul>
+              <NavLinks navLinks={navLinks} />
               <div>
                 <ButtonLink href="/" variant="outline">
                   Our Deals
@@ -41,7 +32,7 @@ export const Header = () => {
             </nav>
             <Search />
           </div>
-          <Cart cartProducts={cartProducts} />
+          <Cart />
           <UserIcon className="text-white laptop:text-black" />
         </div>
       </Container>
