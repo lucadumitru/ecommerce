@@ -35,7 +35,6 @@ export const ProductSection: React.FC<ProductSectionProps> = ({ data }) => {
   const addToCart = () => {
     dispatch(addProduct({ product, quantity: inputValue }));
   };
-
   return (
     <section>
       <div className="mobile:border-b mobile:border-light-gray">
@@ -100,7 +99,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({ data }) => {
           <Image
             alt={`${product.attributes.name} img`}
             height={450}
-            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${productImgUrl}`}
+            src={`${productImgUrl}`}
             width={450}
           />
         </div>
