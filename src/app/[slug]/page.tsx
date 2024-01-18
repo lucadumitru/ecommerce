@@ -1,11 +1,11 @@
 import { ProductSection } from "@/components/sections";
 import { gql } from "@/graphql/client";
 
-export async function getStaticPaths() {
-  const { products } = await gql.getProducts();
-  const paths = products.data.map((product) => ({ params: { slug: product.attributes.slug } }));
-  return { paths, fallback: false };
-}
+// export async function getStaticPaths() {
+//   const { products } = await gql.getProducts();
+//   const paths = products.data.map((product) => ({ params: { slug: product.attributes.slug } }));
+//   return { paths, fallback: false };
+// }
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const data = await gql.getProduct({ slug: params.slug });
