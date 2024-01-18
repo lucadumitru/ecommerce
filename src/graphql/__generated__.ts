@@ -1,6 +1,8 @@
-import { GraphQLClient } from "graphql-request";
-import { GraphQLClientRequestHeaders } from "graphql-request/build/cjs/types";
+import type { GraphQLClient, RequestOptions } from "graphql-request";
 import gql from "graphql-tag";
+
+type GraphQLClientRequestHeaders = RequestOptions["requestHeaders"];
+
 export type Maybe<T> = T;
 export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
