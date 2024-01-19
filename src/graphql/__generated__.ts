@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { GraphQLClient, RequestOptions } from "graphql-request";
 import gql from "graphql-tag";
 
 type GraphQLClientRequestHeaders = RequestOptions["requestHeaders"];
-
 export type Maybe<T> = T;
 export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -21,9 +21,9 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-  DateTime: { input: any; output: any };
-  JSON: { input: any; output: any };
-  Upload: { input: any; output: any };
+  DateTime: { input: unknown; output: unknown };
+  JSON: { input: unknown; output: unknown };
+  Upload: { input: unknown; output: unknown };
 };
 
 export type BooleanFilterInput = {
@@ -1309,7 +1309,7 @@ export type FileFragment = {
   readonly caption: string;
   readonly width: number;
   readonly height: number;
-  readonly formats: any;
+  readonly formats: unknown;
   readonly hash: string;
   readonly ext: string;
   readonly mime: string;
@@ -1317,7 +1317,7 @@ export type FileFragment = {
   readonly url: string;
   readonly previewUrl: string;
   readonly provider: string;
-  readonly provider_metadata: any;
+  readonly provider_metadata: unknown;
 };
 
 export type LinkFragmentFragment = {
@@ -1358,7 +1358,7 @@ export type ProductFragment = {
         readonly caption: string;
         readonly width: number;
         readonly height: number;
-        readonly formats: any;
+        readonly formats: unknown;
         readonly hash: string;
         readonly ext: string;
         readonly mime: string;
@@ -1366,7 +1366,7 @@ export type ProductFragment = {
         readonly url: string;
         readonly previewUrl: string;
         readonly provider: string;
-        readonly provider_metadata: any;
+        readonly provider_metadata: unknown;
       };
     };
   };
@@ -1433,7 +1433,7 @@ export type GetProductQuery = {
               readonly caption: string;
               readonly width: number;
               readonly height: number;
-              readonly formats: any;
+              readonly formats: unknown;
               readonly hash: string;
               readonly ext: string;
               readonly mime: string;
@@ -1441,7 +1441,7 @@ export type GetProductQuery = {
               readonly url: string;
               readonly previewUrl: string;
               readonly provider: string;
-              readonly provider_metadata: any;
+              readonly provider_metadata: unknown;
             };
           };
         };
@@ -1487,7 +1487,7 @@ export type GetProductsQuery = {
               readonly caption: string;
               readonly width: number;
               readonly height: number;
-              readonly formats: any;
+              readonly formats: unknown;
               readonly hash: string;
               readonly ext: string;
               readonly mime: string;
@@ -1495,7 +1495,7 @@ export type GetProductsQuery = {
               readonly url: string;
               readonly previewUrl: string;
               readonly provider: string;
-              readonly provider_metadata: any;
+              readonly provider_metadata: unknown;
             };
           };
         };
@@ -1621,7 +1621,7 @@ export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
   operationName: string,
   operationType?: string,
-  variables?: any
+  variables?: unknown
 ) => Promise<T>;
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, variables) =>
