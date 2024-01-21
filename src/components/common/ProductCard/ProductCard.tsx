@@ -36,7 +36,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             alt={`${product.attributes.name} image`}
             className="h-auto w-full object-cover"
             height={100}
-            src={product.attributes.productPreviewImg.data.attributes.url}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${product.attributes.productPreviewImg.data.attributes.url}`}
             width={100}
           />
         </Link>

@@ -47,3 +47,9 @@
     @apply text-[1rem] font-[300] leading-5;
   }
 }
+
+body.lock {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+}

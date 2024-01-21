@@ -5,9 +5,11 @@ import { ButtonLink, Container, LogoIcon, Search, UserIcon } from "@/components/
 import { BurgerMenuIcon } from "@/components/ui/icons/BurgerMenuIcon";
 import { gql } from "@/graphql/client";
 
+export const revalidate = 600;
+
 export const Header = async () => {
-  const data2 = await gql.getNavLinks();
-  const { navLinks } = data2.navLinks.data[0].attributes;
+  const data = await gql.getNavLinks();
+  const { navLinks } = data.navLinks.data[0].attributes;
   return (
     <header className="bg-dark-blue  py-4 laptop:border-b laptop:border-light-gray laptop:bg-white ">
       <Container>

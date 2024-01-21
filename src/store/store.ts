@@ -3,10 +3,12 @@ import type { TypedUseSelectorHook } from "react-redux";
 import { useSelector } from "react-redux";
 
 import cartSlice from "@/store/features/cart/cartSlice";
+import menuSlice from "@/store/features/menu/menuSlice";
 
 export const store = configureStore({
   reducer: {
-    cartProducts: cartSlice
+    cartProducts: cartSlice,
+    menu: menuSlice
   }
 });
 

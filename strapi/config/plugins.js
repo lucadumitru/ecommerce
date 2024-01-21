@@ -12,23 +12,23 @@ module.exports = ({ env }) => ({
       }
     }
   },
-  upload: {
-    config: {
-      provider: "strapi-provider-upload-supabase",
-      providerOptions: {
-        apiUrl: env("SUPABASE_API_URL"),
-        apiKey: env("SUPABASE_API_KEY"),
-        bucket: env("SUPABASE_BUCKET"),
-        directory: env("SUPABASE_DIRECTORY"),
-        options: {}
-      },
-      actionOptions: {
-        upload: {},
-        uploadStream: {},
-        delete: {}
-      }
-    }
-  },
+  // upload: {
+  //   config: {
+  //     provider: "strapi-provider-upload-supabase",
+  //     providerOptions: {
+  //       apiUrl: env("SUPABASE_API_URL"),
+  //       apiKey: env("SUPABASE_API_KEY"),
+  //       bucket: env("SUPABASE_BUCKET"),
+  //       directory: env("SUPABASE_DIRECTORY"),
+  //       options: {}
+  //     },
+  //     actionOptions: {
+  //       upload: {},
+  //       uploadStream: {},
+  //       delete: {}
+  //     }
+  //   }
+  // },
   "import-export-entries": {
     enabled: true,
     config: {
@@ -38,7 +38,7 @@ module.exports = ({ env }) => ({
        * If you use the local provider to persist medias,
        * `serverPublicHostname` should be set to properly export media urls.
        */
-      serverPublicHostname: "https://yoga.com" // default: "".
+      serverPublicHostname: "" // default: "".
     }
   }
 });

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,11 +24,21 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/assets/*": ["./src/assets/*"],
-      "@/graphql/*": ["./src/graphql/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+      "@/assets/*": [
+        "./src/assets/*"
+      ],
+      "@/graphql/*": [
+        "./src/graphql/*"
+      ]
     }
   },
   "include": [
@@ -37,7 +51,11 @@
     "src/components/ui/icons/icons.stories.mdx",
     "src/components/layout/PreHeader/Header",
     "strapi/config/plugins.js",
-    "src/graphql/documents/queries/getNavLinks.gql"
+    "src/graphql/documents/queries/getNavLinks.gql",
+    "build/types/**/*.ts",
+    "dist/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -99,7 +99,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({ data }) => {
           <Image
             alt={`${product.attributes.name} img`}
             height={450}
-            src={`${productImgUrl}`}
+            src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${productImgUrl}`}
             width={450}
           />
         </div>

@@ -25,6 +25,12 @@ export const Cart = () => {
     : 0;
   const pathName = usePathname();
   const cartPath = pathName.includes("cart");
+  const handleMenuOpen = () => {
+    if (!cartPath) {
+      setCartOpen(!cartOpen);
+      document.body.classList.toggle("lock");
+    }
+  };
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -34,12 +40,14 @@ export const Cart = () => {
         !buttonRef.current.contains(event.target as Node)
       ) {
         setCartOpen(false);
+        document.body.classList.remove("lock");
       }
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
     if (cartPath) {
       setCartOpen(false);
+      document.body.classList.add("lock");
     }
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
@@ -51,7 +59,7 @@ export const Cart = () => {
         aria-label="cart button"
         className="group relative"
         type="button"
-        onClick={() => !cartPath && setCartOpen(!cartOpen)}
+        onClick={handleMenuOpen}
       >
         <CartIcon
           className="text-white transition-all laptop:text-black laptop:group-hover:text-blue"
@@ -77,7 +85,7 @@ export const Cart = () => {
             ref={buttonRef}
             aria-label="close cart button"
             className="group absolute right-2 top-2"
-            onClick={() => setCartOpen(!cartOpen)}
+            onClick={handleMenuOpen}
           >
             <CloseIcon className="text-black transition-all group-hover:text-blue" width="30" />
           </button>
