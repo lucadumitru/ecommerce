@@ -5,7 +5,7 @@ import { Container } from "@/components/ui";
 import { gql } from "@/graphql/client";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 0;
+export const revalidate = 60;
 
 const Home = async () => {
   const products = (await gql.getProducts().catch(notFound)).products.data;
