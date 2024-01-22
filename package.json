@@ -20,6 +20,8 @@
     ]
   },
   "dependencies": {
+    "@apollo/client": "^3.9.0-rc.1",
+    "@apollo/experimental-nextjs-app-support": "^0.6.0",
     "@reduxjs/toolkit": "^2.0.1",
     "class-variance-authority": "^0.7.0",
     "formik": "^2.4.5",
@@ -36,7 +38,6 @@
     "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
-    "graphql-request": "^6.1.0",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/import-types-preset": "^3.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
@@ -71,6 +72,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "graphql-request": "^6.1.0",
     "husky": "^8.0.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
