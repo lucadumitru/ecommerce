@@ -93,5 +93,8 @@
     "tailwindcss-touch": "^1.0.1",
     "ts-jest": "^29.1.1",
     "typescript": "5.2"
-  }
+  },
+  "eslintIgnore": [
+    "__generated__.ts"
+  ]
 }
