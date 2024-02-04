@@ -1,0 +1,13 @@
+overwrite: true
+schema: http://localhost:1337/graphql/playground
+documents: "./src/graphql/documents/**/*.gql"
+generates:
+  ./src/graphql/hooks/__generated__.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+config:
+  maybeValue: "T"
+  avoidOptionals: true
+  immutableTypes: true

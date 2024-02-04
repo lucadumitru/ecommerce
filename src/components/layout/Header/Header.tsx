@@ -1,15 +1,14 @@
 import Link from "next/link";
 
 import { Cart, NavLinks } from "@/components/common";
-import { ButtonLink, Container, LogoIcon, Search, UserIcon } from "@/components/ui";
+import { ButtonLink, Container, LogoIcon, UserIcon } from "@/components/ui";
 import { BurgerMenuIcon } from "@/components/ui/icons/BurgerMenuIcon";
-import { gql } from "@/graphql/client";
+import { gql } from "@/graphql";
 
-export const revalidate = 600;
+import { Search } from "./Search";
 
 export const Header = async () => {
-  const data = await gql.getNavLinks();
-  const { navLinks } = data.navLinks.data[0].attributes;
+  const { navLinks } = (await gql.getNavLinks()).navLinks.data[0].attributes;
   return (
     <header className="bg-dark-blue  py-4 laptop:border-b laptop:border-light-gray laptop:bg-white ">
       <Container>

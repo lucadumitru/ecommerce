@@ -9,9 +9,9 @@ export async function POST(request: Request) {
     const { name, email, phone, message } = (await request.json()) as IFormProps;
     const data = await resend.emails.send({
       from: "ecommerce@email.lucadevelop.com",
-      to: email,
+      react: EmailTemplate({ email, message, name, phone }),
       subject: "Eccomerce email",
-      react: EmailTemplate({ name, email, phone, message })
+      to: email
     });
 
     return Response.json(data);

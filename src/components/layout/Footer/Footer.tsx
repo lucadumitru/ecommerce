@@ -9,37 +9,37 @@ const footerLinks = [
     label: "Information",
     links: [
       {
-        title: "About Us",
-        link: "/"
+        link: "/",
+        title: "About Us"
       },
       {
-        title: "About Zip",
-        link: "/"
+        link: "/",
+        title: "About Zip"
       },
       {
-        title: "Search",
-        link: "/"
+        link: "/",
+        title: "Search"
       },
       {
-        title: "Terms",
-        link: "/"
+        link: "/",
+        title: "Terms"
       },
       {
-        title: "Orders and Returns",
-        link: "/"
+        link: "/",
+        title: "Orders and Returns"
       },
       {
-        title: "Contact Us",
-        link: "/"
+        link: "/",
+        title: "Contact Us"
       },
       {
-        title: "Advanced Search",
-        link: "/"
+        link: "/",
+        title: "Advanced Search"
       },
 
       {
-        title: "Newsletter Subscription",
-        link: "/"
+        link: "/",
+        title: "Newsletter Subscription"
       }
     ]
   },
@@ -47,44 +47,44 @@ const footerLinks = [
     label: "PC Parts",
     links: [
       {
-        title: "CPUS",
-        link: "/"
+        link: "/",
+        title: "CPUS"
       },
       {
-        title: "Add On Cards",
-        link: "/"
+        link: "/",
+        title: "Add On Cards"
       },
       {
-        title: "Hard Drives (Internal)",
-        link: "/"
+        link: "/",
+        title: "Hard Drives (Internal)"
       },
       {
-        title: "Graphic Cards",
-        link: "/"
+        link: "/",
+        title: "Graphic Cards"
       },
       {
-        title: "Keyboards / Mice",
-        link: "/"
+        link: "/",
+        title: "Keyboards / Mice"
       },
       {
-        title: "Cases / Power Supplies / Cooling",
-        link: "/"
+        link: "/",
+        title: "Cases / Power Supplies / Cooling"
       },
       {
-        title: "RAM (Memory)",
-        link: "/"
+        link: "/",
+        title: "RAM (Memory)"
       },
       {
-        title: "Software",
-        link: "/"
+        link: "/",
+        title: "Software"
       },
       {
-        title: "Speakers / Headsets",
-        link: "/"
+        link: "/",
+        title: "Speakers / Headsets"
       },
       {
-        title: "Motherboards",
-        link: "/"
+        link: "/",
+        title: "Motherboards"
       }
     ]
   },
@@ -92,28 +92,28 @@ const footerLinks = [
     label: "Desktop PCs",
     links: [
       {
-        title: "Custom PCs",
-        link: "/"
+        link: "/",
+        title: "Custom PCs"
       },
       {
-        title: "Servers",
-        link: "/"
+        link: "/",
+        title: "Servers"
       },
       {
-        title: "MSI All-In-One PCs",
-        link: "/"
+        link: "/",
+        title: "MSI All-In-One PCs"
       },
       {
-        title: "HP/Compaq PCs",
-        link: "/"
+        link: "/",
+        title: "HP/Compaq PCs"
       },
       {
-        title: "ASUS PCs",
-        link: "/"
+        link: "/",
+        title: "ASUS PCs"
       },
       {
-        title: "Tecs PCs",
-        link: "/"
+        link: "/",
+        title: "Tecs PCs"
       }
     ]
   },
@@ -121,28 +121,28 @@ const footerLinks = [
     label: "Laptops",
     links: [
       {
-        title: "Evryday Use Notebooks",
-        link: "/"
+        link: "/",
+        title: "Evryday Use Notebooks"
       },
       {
-        title: "MSI Workstation Series",
-        link: "/"
+        link: "/",
+        title: "MSI Workstation Series"
       },
       {
-        title: "MSI Prestige Series",
-        link: "/"
+        link: "/",
+        title: "MSI Prestige Series"
       },
       {
-        title: "Tablets and Pads",
-        link: "/"
+        link: "/",
+        title: "Tablets and Pads"
       },
       {
-        title: "Netbooks",
-        link: "/"
+        link: "/",
+        title: "Netbooks"
       },
       {
-        title: "Infinity Gaming Notebooks",
-        link: "/"
+        link: "/",
+        title: "Infinity Gaming Notebooks"
       }
     ]
   },
@@ -150,16 +150,16 @@ const footerLinks = [
     label: "Adress",
     links: [
       {
-        title: "Address: 1234 Street Adress City Address, 1234",
-        link: "/"
+        link: "/",
+        title: "Address: 1234 Street Adress City Address, 1234"
       },
       {
-        title: "Phone: (00) 1234 5678",
-        link: "/"
+        link: "/",
+        title: "Phone: (00) 1234 5678"
       },
       {
-        title: "E-mail: shop@email.com",
-        link: "/"
+        link: "/",
+        title: "E-mail: shop@email.com"
       }
     ]
   }
@@ -167,24 +167,24 @@ const footerLinks = [
 
 const paymentItems = [
   {
-    label: "paypal",
-    img: "/img/payment-methods/paypal.png"
+    img: "/img/payment-methods/paypal.png",
+    label: "paypal"
   },
   {
-    label: "visa",
-    img: "/img/payment-methods/visa.png"
+    img: "/img/payment-methods/visa.png",
+    label: "visa"
   },
   {
-    label: "maestro",
-    img: "/img/payment-methods/maestro.png"
+    img: "/img/payment-methods/maestro.png",
+    label: "maestro"
   },
   {
-    label: "discover",
-    img: "/img/payment-methods/discover.png"
+    img: "/img/payment-methods/discover.png",
+    label: "discover"
   },
   {
-    label: "american-express",
-    img: "/img/payment-methods/american-express.png"
+    img: "/img/payment-methods/american-express.png",
+    label: "american-express"
   }
 ];
 

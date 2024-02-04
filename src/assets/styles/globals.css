@@ -8,7 +8,7 @@
   }
 
   .title-2 {
-    @apply text-[1.125rem] font-[600] tablet:text-[1.625rem] laptop:text-[2rem];
+    @apply text-[1.5rem] font-[600] tablet:text-[1.625rem] laptop:text-[2rem];
   }
 
   .title-3 {

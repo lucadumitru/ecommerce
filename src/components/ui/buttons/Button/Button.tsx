@@ -6,37 +6,37 @@ import { SpinnerIcon } from "@/components/ui";
 export type ButtonVariant = "solid" | "outline";
 export interface ButtonProps extends ReactTagProps<"button"> {
   /**
-   * Button Variant
-   */
-  variant?: ButtonVariant;
-  /**
    * Button children
    */
   children?: React.ReactNode;
-  /**
-   * Loading status
-   */
-  isLoading?: boolean;
-  /**
-   * Start Icon
-   */
-  startIcon?: React.ReactNode;
-  /**
-   * End Icon
-   */
-  endIcon?: React.ReactNode;
-  /**
-   * Loading Text
-   */
-  loadingText?: string;
   /**
    * Class
    */
   className?: string;
   /**
+   * End Icon
+   */
+  endIcon?: React.ReactNode;
+  /**
    * Icon Mobikle off
    */
   iconMobileOff?: boolean;
+  /**
+   * Loading status
+   */
+  isLoading?: boolean;
+  /**
+   * Loading Text
+   */
+  loadingText?: string;
+  /**
+   * Start Icon
+   */
+  startIcon?: React.ReactNode;
+  /**
+   * Button Variant
+   */
+  variant?: ButtonVariant;
 }
 
 export const BUTTON_TEST_IDS = {
@@ -63,13 +63,13 @@ const button = cva(
 );
 const icon = cva("transition ", {
   variants: {
+    iconMobileOff: {
+      false: "",
+      true: "hidden tablet:block"
+    },
     variant: {
       outline: "text-dark-blue group-hover:text-blue group-disabled:text-light-gray",
       solid: "text-white"
-    },
-    iconMobileOff: {
-      true: "hidden tablet:block",
-      false: ""
     }
   }
 });

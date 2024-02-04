@@ -3,8 +3,8 @@ import { cva } from "class-variance-authority";
 import type { ButtonVariant } from "@/components/ui";
 
 interface SpinnerIconProps {
-  circle: ButtonVariant;
-  path: ButtonVariant;
+  circle?: ButtonVariant;
+  path?: ButtonVariant;
 }
 
 const classNames = cva("spinner", {

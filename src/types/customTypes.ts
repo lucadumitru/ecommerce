@@ -1,10 +1,10 @@
 import type { StaticImageData } from "next/image";
 
-import type { ProductFragment } from "@/graphql/__generated__";
+import type { ProductFragment } from "@/graphql/requests/__generated__";
 
 export type Product = {
-  id: string;
   attributes: ProductFragment;
+  id: string;
 };
 export type TInfoItem = {
   icon: StaticImageData | string;

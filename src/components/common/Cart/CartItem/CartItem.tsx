@@ -1,6 +1,7 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 import { useDispatch } from "react-redux";
 
 import { NumberInput, RemoveCartProductIcon } from "@/components/ui";
@@ -17,8 +18,8 @@ interface CartItemProps {
 const classes = cva("", {
   variants: {
     variant: {
-      small: "flex-col flex gap-1 text-[14px] w-full grow",
-      large: "grid grid-cols-[1fr_1fr_1fr_25px] w-full gap-2 laptop:w-[60%]"
+      large: "grid grid-cols-[1fr_1fr_1fr_25px] w-full gap-2 laptop:w-[60%]",
+      small: "flex-col flex gap-1 text-[14px] w-full grow"
     }
   }
 });

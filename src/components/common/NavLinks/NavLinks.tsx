@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import type { ComponentUiLink } from "@/graphql/__generated__";
+import type { ComponentUiLink } from "@/graphql/requests/__generated__";
 
 interface NavLinksProps {
   navLinks: Readonly<ComponentUiLink[]>;

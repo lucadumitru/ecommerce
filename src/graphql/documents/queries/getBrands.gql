@@ -1,0 +1,10 @@
+query getBrands {
+  brands {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}

@@ -2,9 +2,9 @@ type ContainerTag = "section" | "article" | "div";
 
 interface ContainerProps {
   children: React.ReactNode;
+  className?: string;
   maxWidth?: number;
   tag?: ContainerTag;
-  className?: string;
 }
 
 export const Container: React.FC<ContainerProps> = ({

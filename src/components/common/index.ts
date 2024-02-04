@@ -10,3 +10,4 @@ export * from "./SubscribeForm/SubscribeForm";
 export * from "./NavLinks/NavLinks";
 export * from "./StockInfo/StockInfo";
 export * from "./ContactForm/ContactForm-reakt-hook-form";
+export * from "./FilterSection/FilterSection";

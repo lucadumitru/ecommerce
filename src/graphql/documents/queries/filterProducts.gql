@@ -1,0 +1,15 @@
+query filterProducts($minPrice: Float, $maxPrice: Float, $selectedBrands: [String]) {
+  products(
+    filters: {
+      price: { between: [$minPrice, $maxPrice] }
+      or: [{ brand: { title: { in: $selectedBrands } } }]
+    }
+  ) {
+    data {
+      id
+      attributes {
+        ...Product
+      }
+    }
+  }
+}

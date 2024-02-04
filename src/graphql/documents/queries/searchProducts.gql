@@ -1,0 +1,20 @@
+query SearchProducts($name: String!) {
+  products(filters: { name: { contains: $name } }) {
+    data {
+      id
+      attributes {
+        name
+        price
+        discountPrice
+        productPreviewImg {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        slug
+      }
+    }
+  }
+}

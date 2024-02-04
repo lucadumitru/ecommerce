@@ -1,5 +1,5 @@
 import { ProductCard } from "@/components/common";
-import type { GetProductsQuery } from "@/graphql/client";
+import type { GetProductsQuery } from "@/graphql";
 
 type ProductsData = GetProductsQuery["products"]["data"];
 

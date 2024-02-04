@@ -3,13 +3,13 @@
 import Image from "next/image";
 
 export type PaymentItem = {
-  label: string;
   img: string;
+  label: string;
 };
 
 interface PaymentMethodsProps {
-  paymentItems: PaymentItem[];
   className?: string;
+  paymentItems: PaymentItem[];
 }
 
 export const PaymentMethods: React.FC<PaymentMethodsProps> = ({ paymentItems, className }) => (

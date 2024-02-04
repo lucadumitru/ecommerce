@@ -7,11 +7,11 @@ import { ArrowIcon } from "@/components/ui/icons";
 import { changeProductQty } from "@/store/features/cart/cartSlice";
 
 interface NumberInputProps {
-  startValue?: number;
-  minValue?: number;
   maxValue?: number;
-  productId?: string;
+  minValue?: number;
   onValueChange?: (inputNumber: number) => void;
+  productId?: string;
+  startValue?: number;
 }
 
 export const NumberInput: React.FC<NumberInputProps> = ({
@@ -51,7 +51,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   return (
     <div className="min-w-14 flex items-center rounded-[6px] bg-dark-white p-2">
       <input
-        className="h-full w-full bg-transparent px-2 font-[14px] font-semibold"
+        className="h-full w-full bg-transparent px-2 text-[14px] font-semibold"
         value={inputNumber}
         onChange={handleChangeInput}
       />

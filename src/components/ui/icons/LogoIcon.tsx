@@ -1,9 +1,9 @@
 type IconsVariants = "big" | "small";
 
 interface LogoIconProps extends ReactTagProps<"svg"> {
+  IconVariants?: IconsVariants;
   bg?: boolean;
   bgColor?: string;
-  IconVariants?: IconsVariants;
 }
 
 export const LogoIcon: React.FC<LogoIconProps> = ({

@@ -8,8 +8,8 @@ export const AddToCartButton = ({
   product,
   ...props
 }: {
-  product: Product;
   onClick: () => void;
+  product: Product;
 }) => {
   const cartProducts = useAppSelector((state) => state.cartProducts.cartProducts.products);
   const checkIsIntheCart = (arr: CartProduct[], product: Product) =>

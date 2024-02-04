@@ -7,13 +7,13 @@ import React from "react";
 import { ArrowIcon } from "@/components/ui/icons";
 
 interface BreadCrumbsProps {
-  homeElement?: React.ReactNode;
-  separator?: React.ReactNode;
-  containerClasses?: string;
-  listClasses?: string;
   activeClasses?: string;
   capitalizeLinks?: boolean;
+  containerClasses?: string;
   customLinks?: string[];
+  homeElement?: React.ReactNode;
+  listClasses?: string;
+  separator?: React.ReactNode;
 }
 
 export const BreadCrumbs: React.FC<BreadCrumbsProps> = ({

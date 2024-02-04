@@ -1,19 +1,16 @@
-import { ProductSection } from "@/components/sections";
-import { gql } from "@/graphql/client";
+import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  const { products } = await gql.getProducts();
-  const paths = products.data.map((product) => ({ slug: product.attributes.slug }));
-  return paths;
+import { ProductSection } from "@/components/sections";
+import { gql } from "@/graphql";
+
+interface ProductPageProps {
+  params: { slug: string };
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
-  const product = (await gql.getProduct({ slug: params.slug })).products.data[0];
-  return (
-    <main>
-      <ProductSection data={{ product }} />
-    </main>
-  );
+const ProductPage = async ({ params }: ProductPageProps) => {
+  const product = (await gql.getProduct({ slug: params.slug }).catch(notFound)).products.data[0];
+
+  return <ProductSection data={{ product }} />;
 };
 
-export default Page;
+export default ProductPage;

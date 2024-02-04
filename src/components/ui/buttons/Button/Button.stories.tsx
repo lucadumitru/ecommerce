@@ -31,20 +31,20 @@ export const StartIcon = { ...ButtonTemplate };
 StartIcon.args = { ...buttonProps, startIcon: <InstagramIcon />, variant: "solid" };
 
 export default {
-  component: Button,
-  title: "ui/Button",
   argTypes: {
-    startIcon: {
-      control: {
-        type: "select"
-      },
-      options: ICON_OPTIONS
-    },
     endIcon: {
       control: {
         type: "select"
       },
       options: ICON_OPTIONS
+    },
+    startIcon: {
+      control: {
+        type: "select"
+      },
+      options: ICON_OPTIONS
     }
-  }
+  },
+  component: Button,
+  title: "ui/Button"
 } as Meta<typeof Button>;

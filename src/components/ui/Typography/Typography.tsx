@@ -14,17 +14,17 @@ export type TypographyVariant =
 export type TypographyTag = "h1" | "h2" | "h3" | "h4" | "span" | "div" | "p";
 export type TypographyProps<Tag extends TypographyTag> = ReactTagProps<Exclude<Tag, "span">> & {
   /**
-   * variant
+   * children
    */
-  variant: TypographyVariant;
+  children: React.ReactNode;
   /**
    * tag
    */
   tag?: TypographyTag;
   /**
-   * children
+   * variant
    */
-  children: React.ReactNode;
+  variant: TypographyVariant;
 };
 
 export const TYPOGRAPHY_TEST_IDS = {

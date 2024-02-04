@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import type { GraphQLClient, RequestOptions } from "graphql-request";
+import { GraphQLClient } from "graphql-request";
+import { GraphQLClientRequestHeaders } from "graphql-request/build/cjs/types";
 import gql from "graphql-tag";
-
-type GraphQLClientRequestHeaders = RequestOptions["requestHeaders"];
 export type Maybe<T> = T;
 export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -21,9 +19,9 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-  DateTime: { input: unknown; output: unknown };
-  JSON: { input: unknown; output: unknown };
-  Upload: { input: unknown; output: unknown };
+  DateTime: { input: any; output: any };
+  JSON: { input: any; output: any };
+  Upload: { input: any; output: any };
 };
 
 export type BooleanFilterInput = {
@@ -1309,7 +1307,7 @@ export type FileFragment = {
   readonly caption: string;
   readonly width: number;
   readonly height: number;
-  readonly formats: unknown;
+  readonly formats: any;
   readonly hash: string;
   readonly ext: string;
   readonly mime: string;
@@ -1317,7 +1315,7 @@ export type FileFragment = {
   readonly url: string;
   readonly previewUrl: string;
   readonly provider: string;
-  readonly provider_metadata: unknown;
+  readonly provider_metadata: any;
 };
 
 export type LinkFragmentFragment = {
@@ -1358,7 +1356,7 @@ export type ProductFragment = {
         readonly caption: string;
         readonly width: number;
         readonly height: number;
-        readonly formats: unknown;
+        readonly formats: any;
         readonly hash: string;
         readonly ext: string;
         readonly mime: string;
@@ -1366,7 +1364,7 @@ export type ProductFragment = {
         readonly url: string;
         readonly previewUrl: string;
         readonly provider: string;
-        readonly provider_metadata: unknown;
+        readonly provider_metadata: any;
       };
     };
   };
@@ -1376,6 +1374,80 @@ export type ProductFragment = {
       readonly __typename?: "CategoryEntity";
       readonly attributes: { readonly __typename?: "Category"; readonly title: string };
     };
+  };
+};
+
+export type FilterProductsQueryVariables = Exact<{
+  minPrice: InputMaybe<Scalars["Float"]["input"]>;
+  maxPrice: InputMaybe<Scalars["Float"]["input"]>;
+  selectedBrands: InputMaybe<
+    ReadonlyArray<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>
+  >;
+}>;
+
+export type FilterProductsQuery = {
+  readonly __typename?: "Query";
+  readonly products: {
+    readonly __typename?: "ProductEntityResponseCollection";
+    readonly data: ReadonlyArray<{
+      readonly __typename?: "ProductEntity";
+      readonly id: string;
+      readonly attributes: {
+        readonly __typename?: "Product";
+        readonly name: string;
+        readonly price: number;
+        readonly discountPrice: number;
+        readonly stock: number;
+        readonly slug: string;
+        readonly shortName: string;
+        readonly description: string;
+        readonly productPreviewImg: {
+          readonly __typename?: "UploadFileEntityResponse";
+          readonly data: {
+            readonly __typename?: "UploadFileEntity";
+            readonly id: string;
+            readonly attributes: {
+              readonly __typename?: "UploadFile";
+              readonly name: string;
+              readonly alternativeText: string;
+              readonly caption: string;
+              readonly width: number;
+              readonly height: number;
+              readonly formats: any;
+              readonly hash: string;
+              readonly ext: string;
+              readonly mime: string;
+              readonly size: number;
+              readonly url: string;
+              readonly previewUrl: string;
+              readonly provider: string;
+              readonly provider_metadata: any;
+            };
+          };
+        };
+        readonly category: {
+          readonly __typename?: "CategoryEntityResponse";
+          readonly data: {
+            readonly __typename?: "CategoryEntity";
+            readonly attributes: { readonly __typename?: "Category"; readonly title: string };
+          };
+        };
+      };
+    }>;
+  };
+};
+
+export type GetBrandsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetBrandsQuery = {
+  readonly __typename?: "Query";
+  readonly brands: {
+    readonly __typename?: "BrandEntityResponseCollection";
+    readonly data: ReadonlyArray<{
+      readonly __typename?: "BrandEntity";
+      readonly id: string;
+      readonly attributes: { readonly __typename?: "Brand"; readonly title: string };
+    }>;
   };
 };
 
@@ -1433,7 +1505,7 @@ export type GetProductQuery = {
               readonly caption: string;
               readonly width: number;
               readonly height: number;
-              readonly formats: unknown;
+              readonly formats: any;
               readonly hash: string;
               readonly ext: string;
               readonly mime: string;
@@ -1441,7 +1513,7 @@ export type GetProductQuery = {
               readonly url: string;
               readonly previewUrl: string;
               readonly provider: string;
-              readonly provider_metadata: unknown;
+              readonly provider_metadata: any;
             };
           };
         };
@@ -1487,7 +1559,7 @@ export type GetProductsQuery = {
               readonly caption: string;
               readonly width: number;
               readonly height: number;
-              readonly formats: unknown;
+              readonly formats: any;
               readonly hash: string;
               readonly ext: string;
               readonly mime: string;
@@ -1495,7 +1567,7 @@ export type GetProductsQuery = {
               readonly url: string;
               readonly previewUrl: string;
               readonly provider: string;
-              readonly provider_metadata: unknown;
+              readonly provider_metadata: any;
             };
           };
         };
@@ -1504,6 +1576,35 @@ export type GetProductsQuery = {
           readonly data: {
             readonly __typename?: "CategoryEntity";
             readonly attributes: { readonly __typename?: "Category"; readonly title: string };
+          };
+        };
+      };
+    }>;
+  };
+};
+
+export type SearchProductsQueryVariables = Exact<{
+  name: Scalars["String"]["input"];
+}>;
+
+export type SearchProductsQuery = {
+  readonly __typename?: "Query";
+  readonly products: {
+    readonly __typename?: "ProductEntityResponseCollection";
+    readonly data: ReadonlyArray<{
+      readonly __typename?: "ProductEntity";
+      readonly id: string;
+      readonly attributes: {
+        readonly __typename?: "Product";
+        readonly name: string;
+        readonly price: number;
+        readonly discountPrice: number;
+        readonly slug: string;
+        readonly productPreviewImg: {
+          readonly __typename?: "UploadFileEntityResponse";
+          readonly data: {
+            readonly __typename?: "UploadFileEntity";
+            readonly attributes: { readonly __typename?: "UploadFile"; readonly url: string };
           };
         };
       };
@@ -1577,6 +1678,36 @@ export const ProductFragmentDoc = gql`
   ${FileFragmentDoc}
   ${CategoryFragmentDoc}
 `;
+export const FilterProductsDocument = gql`
+  query filterProducts($minPrice: Float, $maxPrice: Float, $selectedBrands: [String]) {
+    products(
+      filters: {
+        price: { between: [$minPrice, $maxPrice] }
+        or: [{ brand: { title: { in: $selectedBrands } } }]
+      }
+    ) {
+      data {
+        id
+        attributes {
+          ...Product
+        }
+      }
+    }
+  }
+  ${ProductFragmentDoc}
+`;
+export const GetBrandsDocument = gql`
+  query getBrands {
+    brands {
+      data {
+        id
+        attributes {
+          title
+        }
+      }
+    }
+  }
+`;
 export const GetNavLinksDocument = gql`
   query getNavLinks {
     navLinks {
@@ -1616,12 +1747,34 @@ export const GetProductsDocument = gql`
   }
   ${ProductFragmentDoc}
 `;
+export const SearchProductsDocument = gql`
+  query SearchProducts($name: String!) {
+    products(filters: { name: { contains: $name } }) {
+      data {
+        id
+        attributes {
+          name
+          price
+          discountPrice
+          productPreviewImg {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          slug
+        }
+      }
+    }
+  }
+`;
 
 export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
   operationName: string,
   operationType?: string,
-  variables?: unknown
+  variables?: any
 ) => Promise<T>;
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, variables) =>
@@ -1629,6 +1782,36 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    filterProducts(
+      variables?: FilterProductsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders
+    ): Promise<FilterProductsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<FilterProductsQuery>(FilterProductsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders
+          }),
+        "filterProducts",
+        "query",
+        variables
+      );
+    },
+    getBrands(
+      variables?: GetBrandsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders
+    ): Promise<GetBrandsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<GetBrandsQuery>(GetBrandsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders
+          }),
+        "getBrands",
+        "query",
+        variables
+      );
+    },
     getNavLinks(
       variables?: GetNavLinksQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders
@@ -1670,6 +1853,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders
           }),
         "getProducts",
+        "query",
+        variables
+      );
+    },
+    SearchProducts(
+      variables: SearchProductsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders
+    ): Promise<SearchProductsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<SearchProductsQuery>(SearchProductsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders
+          }),
+        "SearchProducts",
         "query",
         variables
       );

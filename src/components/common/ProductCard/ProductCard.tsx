@@ -14,6 +14,7 @@ import { AddToCartButton } from "./AddToCartButton";
 import { FavouriteButton } from "./FavouriteButton/FavouriteButton";
 
 interface ProductCardProps {
+  isLoading?: boolean;
   product: Product;
 }
 
@@ -23,6 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     product.attributes.name.length >= 60
       ? `${product.attributes.name.slice(0, 60)}...`
       : product.attributes.name;
+
   return (
     <article className="group relative flex flex-col gap-3 overflow-hidden p-6">
       <div className="absolute right-3 top-3 flex flex-col gap-1 transition hover-hover:translate-x-10 hover-hover:opacity-0 hover-hover:group-hover:visible hover-hover:group-hover:translate-x-0 hover-hover:group-hover:opacity-100">
@@ -34,10 +36,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Link href={`/${product.attributes.slug}`}>
           <Image
             alt={`${product.attributes.name} image`}
-            className="h-auto w-full object-cover"
-            height={100}
+            className="mx-auto"
+            height={150}
             src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${product.attributes.productPreviewImg.data.attributes.url}`}
-            width={100}
+            width={150}
           />
         </Link>
       </div>

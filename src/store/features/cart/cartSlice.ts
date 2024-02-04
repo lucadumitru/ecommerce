@@ -15,8 +15,8 @@ type Action = {
 
 interface CartState {
   cartProducts: {
-    products: CartProduct[];
     orderTotal: number;
+    products: CartProduct[];
   };
 }
 

@@ -5,9 +5,9 @@ import { useState } from "react";
 import { ArrowIcon } from "@/components/ui/icons";
 
 interface AccordionItemProps {
-  title: string;
   body: string | React.ReactNode;
   bodyClassName?: string;
+  title: string;
 }
 
 export const AccordionItem: React.FC<AccordionItemProps> = ({ title, body, bodyClassName }) => {

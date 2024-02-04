@@ -7,25 +7,25 @@ import type { ButtonVariant } from "..";
 
 export interface ButtonLinkProps extends LinkProps {
   /**
-   * ButtonLink Variant
-   */
-  variant?: ButtonVariant;
-  /**
    * ButtonLink children
    */
   children?: React.ReactNode;
   /**
-   * Start Icon
+   * Class
    */
-  startIcon?: React.ReactNode;
+  className?: string;
   /**
    * End Icon
    */
   endIcon?: React.ReactNode;
   /**
-   * Class
+   * Start Icon
    */
-  className?: string;
+  startIcon?: React.ReactNode;
+  /**
+   * ButtonLink Variant
+   */
+  variant?: ButtonVariant;
 }
 
 export const BUTTON_LINK_TEST_IDS = {

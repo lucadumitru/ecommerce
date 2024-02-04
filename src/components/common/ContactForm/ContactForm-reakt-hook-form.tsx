@@ -7,10 +7,10 @@ import toast from "react-hot-toast";
 import { Input, Button } from "@/components/ui";
 
 export interface IFormProps {
-  name: string;
   email: string;
-  phone: string;
   message: string;
+  name: string;
+  phone: string;
 }
 
 export const ContactForm = () => {
@@ -25,10 +25,10 @@ export const ContactForm = () => {
   const { isSubmitting } = formState;
   const onSubmit: SubmitHandler<IFormProps> = async (data) => {
     const response = await fetch("/api/send", {
-      method: "POST",
       body: JSON.stringify({
         ...data
-      })
+      }),
+      method: "POST"
     });
     if (response.ok) {
       toast.success(`${data.name}, your message has been sent`);

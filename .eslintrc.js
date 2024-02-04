@@ -7,8 +7,11 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "prettier",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "plugin:typescript-sort-keys/recommended"
+    // "plugin:sort-keys-fix"
   ],
+  parser: "@typescript-eslint/parser",
   env: {
     browser: true,
     es2021: true,
@@ -29,8 +32,15 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module"
   },
-  plugins: ["@next/eslint-plugin-next", "prettier", "jest"],
+  plugins: [
+    "@next/eslint-plugin-next",
+    "prettier",
+    "jest",
+    "typescript-sort-keys",
+    "sort-keys-fix"
+  ],
   rules: {
+    "sort-keys-fix/sort-keys-fix": "warn",
     "jsx-a11y/label-has-associated-control": [
       2,
       {
@@ -68,7 +78,7 @@ module.exports = {
     "no-param-reassign": 0,
     "no-restricted-syntax": 0,
     "@typescript-eslint/no-loop-func": 0,
-    "sort-keys": [1, "asc", { natural: true, allowLineSeparatedGroups: true }],
+    // "sort-keys": [1, "asc", { natural: true, allowLineSeparatedGroups: true }],
     "react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-sort-props": [
       2,

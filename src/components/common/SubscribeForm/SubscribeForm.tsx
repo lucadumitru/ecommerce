@@ -5,10 +5,10 @@ import { useState } from "react";
 import { Button, Input } from "@/components/ui";
 
 interface SubscribeFormProps {
-  description?: boolean;
-  title?: string;
-  subTitle?: string;
   className?: string;
+  description?: boolean;
+  subTitle?: string;
+  title?: string;
 }
 
 export const SubscribeForm: React.FC<SubscribeFormProps> = ({
