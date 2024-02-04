@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// eslint-disable
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
+
 export type Maybe<T> = T;
 export type InputMaybe<T> = T;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -14,13 +17,13 @@ export type Incremental<T> =
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
   Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
   DateTime: { input: any; output: any };
+  Float: { input: number; output: number };
+  ID: { input: string; output: string };
+  Int: { input: number; output: number };
   JSON: { input: any; output: any };
+  String: { input: string; output: string };
   Upload: { input: any; output: any };
 };
 
@@ -1302,72 +1305,41 @@ export type CategoryFragment = { readonly __typename?: "Category"; readonly titl
 
 export type FileFragment = {
   readonly __typename?: "UploadFile";
-  readonly name: string;
   readonly alternativeText: string;
   readonly caption: string;
-  readonly width: number;
-  readonly height: number;
+  readonly ext: string;
   readonly formats: any;
   readonly hash: string;
-  readonly ext: string;
+  readonly height: number;
   readonly mime: string;
-  readonly size: number;
-  readonly url: string;
+  readonly name: string;
   readonly previewUrl: string;
   readonly provider: string;
   readonly provider_metadata: any;
+  readonly size: number;
+  readonly url: string;
+  readonly width: number;
 };
 
 export type LinkFragmentFragment = {
   readonly __typename?: "ComponentUiLink";
+  readonly href: string;
   readonly id: string;
   readonly label: string;
-  readonly href: string;
 };
 
 export type NavLinkFragmentFragment = {
   readonly __typename?: "NavLink";
   readonly navLinks: ReadonlyArray<{
     readonly __typename?: "ComponentUiLink";
+    readonly href: string;
     readonly id: string;
     readonly label: string;
-    readonly href: string;
   }>;
 };
 
 export type ProductFragment = {
   readonly __typename?: "Product";
-  readonly name: string;
-  readonly price: number;
-  readonly discountPrice: number;
-  readonly stock: number;
-  readonly slug: string;
-  readonly shortName: string;
-  readonly description: string;
-  readonly productPreviewImg: {
-    readonly __typename?: "UploadFileEntityResponse";
-    readonly data: {
-      readonly __typename?: "UploadFileEntity";
-      readonly id: string;
-      readonly attributes: {
-        readonly __typename?: "UploadFile";
-        readonly name: string;
-        readonly alternativeText: string;
-        readonly caption: string;
-        readonly width: number;
-        readonly height: number;
-        readonly formats: any;
-        readonly hash: string;
-        readonly ext: string;
-        readonly mime: string;
-        readonly size: number;
-        readonly url: string;
-        readonly previewUrl: string;
-        readonly provider: string;
-        readonly provider_metadata: any;
-      };
-    };
-  };
   readonly category: {
     readonly __typename?: "CategoryEntityResponse";
     readonly data: {
@@ -1375,11 +1347,42 @@ export type ProductFragment = {
       readonly attributes: { readonly __typename?: "Category"; readonly title: string };
     };
   };
+  readonly description: string;
+  readonly discountPrice: number;
+  readonly name: string;
+  readonly price: number;
+  readonly productPreviewImg: {
+    readonly __typename?: "UploadFileEntityResponse";
+    readonly data: {
+      readonly __typename?: "UploadFileEntity";
+      readonly attributes: {
+        readonly __typename?: "UploadFile";
+        readonly alternativeText: string;
+        readonly caption: string;
+        readonly ext: string;
+        readonly formats: any;
+        readonly hash: string;
+        readonly height: number;
+        readonly mime: string;
+        readonly name: string;
+        readonly previewUrl: string;
+        readonly provider: string;
+        readonly provider_metadata: any;
+        readonly size: number;
+        readonly url: string;
+        readonly width: number;
+      };
+      readonly id: string;
+    };
+  };
+  readonly shortName: string;
+  readonly slug: string;
+  readonly stock: number;
 };
 
 export type FilterProductsQueryVariables = Exact<{
-  minPrice: InputMaybe<Scalars["Float"]["input"]>;
   maxPrice: InputMaybe<Scalars["Float"]["input"]>;
+  minPrice: InputMaybe<Scalars["Float"]["input"]>;
   selectedBrands: InputMaybe<
     ReadonlyArray<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>
   >;
@@ -1391,40 +1394,8 @@ export type FilterProductsQuery = {
     readonly __typename?: "ProductEntityResponseCollection";
     readonly data: ReadonlyArray<{
       readonly __typename?: "ProductEntity";
-      readonly id: string;
       readonly attributes: {
         readonly __typename?: "Product";
-        readonly name: string;
-        readonly price: number;
-        readonly discountPrice: number;
-        readonly stock: number;
-        readonly slug: string;
-        readonly shortName: string;
-        readonly description: string;
-        readonly productPreviewImg: {
-          readonly __typename?: "UploadFileEntityResponse";
-          readonly data: {
-            readonly __typename?: "UploadFileEntity";
-            readonly id: string;
-            readonly attributes: {
-              readonly __typename?: "UploadFile";
-              readonly name: string;
-              readonly alternativeText: string;
-              readonly caption: string;
-              readonly width: number;
-              readonly height: number;
-              readonly formats: any;
-              readonly hash: string;
-              readonly ext: string;
-              readonly mime: string;
-              readonly size: number;
-              readonly url: string;
-              readonly previewUrl: string;
-              readonly provider: string;
-              readonly provider_metadata: any;
-            };
-          };
-        };
         readonly category: {
           readonly __typename?: "CategoryEntityResponse";
           readonly data: {
@@ -1432,7 +1403,39 @@ export type FilterProductsQuery = {
             readonly attributes: { readonly __typename?: "Category"; readonly title: string };
           };
         };
+        readonly description: string;
+        readonly discountPrice: number;
+        readonly name: string;
+        readonly price: number;
+        readonly productPreviewImg: {
+          readonly __typename?: "UploadFileEntityResponse";
+          readonly data: {
+            readonly __typename?: "UploadFileEntity";
+            readonly attributes: {
+              readonly __typename?: "UploadFile";
+              readonly alternativeText: string;
+              readonly caption: string;
+              readonly ext: string;
+              readonly formats: any;
+              readonly hash: string;
+              readonly height: number;
+              readonly mime: string;
+              readonly name: string;
+              readonly previewUrl: string;
+              readonly provider: string;
+              readonly provider_metadata: any;
+              readonly size: number;
+              readonly url: string;
+              readonly width: number;
+            };
+            readonly id: string;
+          };
+        };
+        readonly shortName: string;
+        readonly slug: string;
+        readonly stock: number;
       };
+      readonly id: string;
     }>;
   };
 };
@@ -1445,8 +1448,8 @@ export type GetBrandsQuery = {
     readonly __typename?: "BrandEntityResponseCollection";
     readonly data: ReadonlyArray<{
       readonly __typename?: "BrandEntity";
-      readonly id: string;
       readonly attributes: { readonly __typename?: "Brand"; readonly title: string };
+      readonly id: string;
     }>;
   };
 };
@@ -1459,16 +1462,16 @@ export type GetNavLinksQuery = {
     readonly __typename?: "NavLinkEntityResponseCollection";
     readonly data: ReadonlyArray<{
       readonly __typename?: "NavLinkEntity";
-      readonly id: string;
       readonly attributes: {
         readonly __typename?: "NavLink";
         readonly navLinks: ReadonlyArray<{
           readonly __typename?: "ComponentUiLink";
+          readonly href: string;
           readonly id: string;
           readonly label: string;
-          readonly href: string;
         }>;
       };
+      readonly id: string;
     }>;
   };
 };
@@ -1483,40 +1486,8 @@ export type GetProductQuery = {
     readonly __typename?: "ProductEntityResponseCollection";
     readonly data: ReadonlyArray<{
       readonly __typename?: "ProductEntity";
-      readonly id: string;
       readonly attributes: {
         readonly __typename?: "Product";
-        readonly name: string;
-        readonly price: number;
-        readonly discountPrice: number;
-        readonly stock: number;
-        readonly slug: string;
-        readonly shortName: string;
-        readonly description: string;
-        readonly productPreviewImg: {
-          readonly __typename?: "UploadFileEntityResponse";
-          readonly data: {
-            readonly __typename?: "UploadFileEntity";
-            readonly id: string;
-            readonly attributes: {
-              readonly __typename?: "UploadFile";
-              readonly name: string;
-              readonly alternativeText: string;
-              readonly caption: string;
-              readonly width: number;
-              readonly height: number;
-              readonly formats: any;
-              readonly hash: string;
-              readonly ext: string;
-              readonly mime: string;
-              readonly size: number;
-              readonly url: string;
-              readonly previewUrl: string;
-              readonly provider: string;
-              readonly provider_metadata: any;
-            };
-          };
-        };
         readonly category: {
           readonly __typename?: "CategoryEntityResponse";
           readonly data: {
@@ -1524,7 +1495,39 @@ export type GetProductQuery = {
             readonly attributes: { readonly __typename?: "Category"; readonly title: string };
           };
         };
+        readonly description: string;
+        readonly discountPrice: number;
+        readonly name: string;
+        readonly price: number;
+        readonly productPreviewImg: {
+          readonly __typename?: "UploadFileEntityResponse";
+          readonly data: {
+            readonly __typename?: "UploadFileEntity";
+            readonly attributes: {
+              readonly __typename?: "UploadFile";
+              readonly alternativeText: string;
+              readonly caption: string;
+              readonly ext: string;
+              readonly formats: any;
+              readonly hash: string;
+              readonly height: number;
+              readonly mime: string;
+              readonly name: string;
+              readonly previewUrl: string;
+              readonly provider: string;
+              readonly provider_metadata: any;
+              readonly size: number;
+              readonly url: string;
+              readonly width: number;
+            };
+            readonly id: string;
+          };
+        };
+        readonly shortName: string;
+        readonly slug: string;
+        readonly stock: number;
       };
+      readonly id: string;
     }>;
   };
 };
@@ -1537,40 +1540,8 @@ export type GetProductsQuery = {
     readonly __typename?: "ProductEntityResponseCollection";
     readonly data: ReadonlyArray<{
       readonly __typename?: "ProductEntity";
-      readonly id: string;
       readonly attributes: {
         readonly __typename?: "Product";
-        readonly name: string;
-        readonly price: number;
-        readonly discountPrice: number;
-        readonly stock: number;
-        readonly slug: string;
-        readonly shortName: string;
-        readonly description: string;
-        readonly productPreviewImg: {
-          readonly __typename?: "UploadFileEntityResponse";
-          readonly data: {
-            readonly __typename?: "UploadFileEntity";
-            readonly id: string;
-            readonly attributes: {
-              readonly __typename?: "UploadFile";
-              readonly name: string;
-              readonly alternativeText: string;
-              readonly caption: string;
-              readonly width: number;
-              readonly height: number;
-              readonly formats: any;
-              readonly hash: string;
-              readonly ext: string;
-              readonly mime: string;
-              readonly size: number;
-              readonly url: string;
-              readonly previewUrl: string;
-              readonly provider: string;
-              readonly provider_metadata: any;
-            };
-          };
-        };
         readonly category: {
           readonly __typename?: "CategoryEntityResponse";
           readonly data: {
@@ -1578,7 +1549,39 @@ export type GetProductsQuery = {
             readonly attributes: { readonly __typename?: "Category"; readonly title: string };
           };
         };
+        readonly description: string;
+        readonly discountPrice: number;
+        readonly name: string;
+        readonly price: number;
+        readonly productPreviewImg: {
+          readonly __typename?: "UploadFileEntityResponse";
+          readonly data: {
+            readonly __typename?: "UploadFileEntity";
+            readonly attributes: {
+              readonly __typename?: "UploadFile";
+              readonly alternativeText: string;
+              readonly caption: string;
+              readonly ext: string;
+              readonly formats: any;
+              readonly hash: string;
+              readonly height: number;
+              readonly mime: string;
+              readonly name: string;
+              readonly previewUrl: string;
+              readonly provider: string;
+              readonly provider_metadata: any;
+              readonly size: number;
+              readonly url: string;
+              readonly width: number;
+            };
+            readonly id: string;
+          };
+        };
+        readonly shortName: string;
+        readonly slug: string;
+        readonly stock: number;
       };
+      readonly id: string;
     }>;
   };
 };
@@ -1593,13 +1596,11 @@ export type SearchProductsQuery = {
     readonly __typename?: "ProductEntityResponseCollection";
     readonly data: ReadonlyArray<{
       readonly __typename?: "ProductEntity";
-      readonly id: string;
       readonly attributes: {
         readonly __typename?: "Product";
+        readonly discountPrice: number;
         readonly name: string;
         readonly price: number;
-        readonly discountPrice: number;
-        readonly slug: string;
         readonly productPreviewImg: {
           readonly __typename?: "UploadFileEntityResponse";
           readonly data: {
@@ -1607,7 +1608,9 @@ export type SearchProductsQuery = {
             readonly attributes: { readonly __typename?: "UploadFile"; readonly url: string };
           };
         };
+        readonly slug: string;
       };
+      readonly id: string;
     }>;
   };
 };

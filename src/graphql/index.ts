@@ -12,7 +12,7 @@ const client = new GraphQLClient(
 );
 export const gql = getSdk(client);
 
-// export * from "./requests/__generated__";
+export * from "./requests/__generated__";
 
 export {
   useSearchProductsQuery,
