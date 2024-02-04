@@ -4,6 +4,9 @@ import { gql } from "@/graphql";
 
 import { FilteredProducts } from "./FilteredProducts";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const LaptopsPage = async () => {
   const products = (await gql.getProducts()).products.data;
   const prices = products.map((product) => product.attributes.price);

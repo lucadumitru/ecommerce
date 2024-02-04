@@ -1,5 +1,5 @@
 overwrite: true
-schema: http://localhost:1337/graphql/playground
+schema: https://ecommerce-strapi-cms-fmfc.onrender.com/graphql/playground
 documents: "./src/graphql/documents/**/*.gql"
 generates:
   ./src/graphql/hooks/__generated__.ts:

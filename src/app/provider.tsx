@@ -14,7 +14,7 @@ const client = new ApolloClient({
   headers: {
     authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`
   },
-  uri: "http://localhost:1337/graphql/playground"
+  uri: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql/playground`
 });
 
 export const Provider: React.FC<ProviderProps> = ({ children }) => (
