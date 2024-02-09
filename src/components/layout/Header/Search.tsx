@@ -52,10 +52,13 @@ export const Search: React.FC = () => {
 
   React.useEffect(() => {
     document.addEventListener("mousedown", handleOutsideClick);
-    document.body.classList.add("lock");
+    if (open || inputFocus) {
+      document.body.classList.add("lock");
+    } else {
+      document.body.classList.remove("lock");
+    }
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
-      document.body.classList.remove("lock");
     };
   }, [open, inputFocus]);
   return (

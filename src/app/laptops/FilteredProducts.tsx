@@ -8,17 +8,31 @@ import { ProductCardSkelleton } from "@/components/common/ProductCard/ProductCar
 import { useFilterProductsQuery } from "@/graphql";
 import { useAppSelector } from "@/store/store";
 
-export const FilteredProducts: React.FunctionComponent = () => {
+interface FilteredProductsProps {
+  endPrice?: number;
+  startPrice?: number;
+}
+
+export const FilteredProducts: React.FC<FilteredProductsProps> = ({ startPrice, endPrice }) => {
   const { price } = useAppSelector((state) => state.filters);
-  const { data, loading, refetch } = useFilterProductsQuery({
-    notifyOnNetworkStatusChange: true
-  });
   const selectedBrands = useAppSelector((state) => state.filters.brands);
 
+  const { data, loading, refetch } = useFilterProductsQuery({
+    notifyOnNetworkStatusChange: true,
+    variables: {
+      maxPrice: endPrice || 0,
+      minPrice: startPrice || 0
+    }
+  });
+
   React.useEffect(() => {
+    if (price.max && price.min) {
+      refetch({
+        maxPrice: price.max,
+        minPrice: price.min
+      }).catch(notFound);
+    }
     refetch({
-      maxPrice: price.max,
-      minPrice: price.min,
       selectedBrands: selectedBrands.length ? selectedBrands : undefined
     }).catch(notFound);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,14 +40,13 @@ export const FilteredProducts: React.FunctionComponent = () => {
 
   if (data?.products.data.length === 0) return <div>No products found</div>;
 
-  if (loading)
-    return Array.from({ length: 4 }).map((_, index) => <ProductCardSkelleton key={index} />);
-
   return (
-    <div className="grid w-full grid-cols-4">
-      {data?.products.data.map((product) => (
-        <ProductCard key={product.id} isLoading={loading} product={product} />
-      ))}
+    <div className="grid w-full grid-flow-row grid-cols-4">
+      {loading
+        ? Array.from({ length: 8 }).map((_, index) => <ProductCardSkelleton key={index} />)
+        : data?.products.data.map((product) => (
+            <ProductCard key={product.id} isLoading={loading} product={product} />
+          ))}
     </div>
   );
 };

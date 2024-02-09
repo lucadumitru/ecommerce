@@ -13,6 +13,7 @@ const LaptopsPage = async () => {
   const maxPrice = Math.max(...prices);
   const minPrice = Math.min(...prices);
   const brands = (await gql.getBrands()).brands.data.map((brand) => brand.attributes.title);
+
   return (
     <Container className="flex gap-2">
       <FilterSection
@@ -21,7 +22,7 @@ const LaptopsPage = async () => {
         endPrice={maxPrice}
         startPrice={minPrice}
       />
-      <FilteredProducts />
+      <FilteredProducts endPrice={maxPrice} startPrice={minPrice} />
     </Container>
   );
 };

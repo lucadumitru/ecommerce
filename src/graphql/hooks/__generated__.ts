@@ -1383,7 +1383,7 @@ export type ProductFragment = {
 export type FilterProductsQueryVariables = Exact<{
   maxPrice: InputMaybe<Scalars["Float"]["input"]>;
   minPrice: InputMaybe<Scalars["Float"]["input"]>;
-  selectedBrands: InputMaybe<
+  selectedBrands?: InputMaybe<
     ReadonlyArray<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>
   >;
 }>;

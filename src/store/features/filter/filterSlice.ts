@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   brands: [] as string[],
-  price: { max: 9999 as number, min: 0 as number }
+  price: { max: 0 as number, min: 0 as number }
 };
 
 const menuSlice = createSlice({
@@ -11,7 +11,7 @@ const menuSlice = createSlice({
   name: "filter",
   reducers: {
     addBrand(state, action: PayloadAction<string>) {
-      if (!state.brands.includes(action.payload)) {
+      if (!state.brands?.includes(action.payload)) {
         state.brands = [...state.brands, action.payload];
       } else {
         state.brands = state.brands.filter((brand) => brand !== action.payload);
