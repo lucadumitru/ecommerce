@@ -47,7 +47,7 @@ export const Cart = () => {
     document.addEventListener("mousedown", handleOutsideClick);
     if (cartPath) {
       setCartOpen(false);
-      document.body.classList.add("lock");
+      document.body.classList.remove("lock");
     }
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);

@@ -62,7 +62,7 @@ export const ShopInfo = () => {
     };
   }, [open]);
   return (
-    <div className="relative">
+    <div className="relative z-30">
       <button ref={buttonRef} className="flex items-center gap-1 " onClick={() => setOpen(!open)}>
         {`${currentDay.slice(0, 3)}: ${currentSchedule.hours}`}
         <ArrowIcon className={`transition-all ${open ? "rotate-180" : "rotate-0"}`} />
@@ -73,7 +73,7 @@ export const ShopInfo = () => {
           open ? "visible max-h-[1000px] border-opacity-100" : "invisible max-h-0 border-opacity-0"
         }`}
       >
-        <div className="flex items-start gap-3 px-5 py-2.5">
+        <div className="flex w-[240px] items-start  gap-3 px-5 py-2.5 mobile:w-full">
           <TimeIcon className="hidden text-blue mobile:block" />
           <div>
             <div className="mb-1 text-[12px]">We are open:</div>

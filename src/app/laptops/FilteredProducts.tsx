@@ -41,7 +41,7 @@ export const FilteredProducts: React.FC<FilteredProductsProps> = ({ startPrice, 
   if (data?.products.data.length === 0) return <div>No products found</div>;
 
   return (
-    <div className="grid w-full grid-flow-row grid-cols-4">
+    <div className="grid w-full grid-flow-row grid-cols-2 tablet:grid-cols-4">
       {loading
         ? Array.from({ length: 8 }).map((_, index) => <ProductCardSkelleton key={index} />)
         : data?.products.data.map((product) => (

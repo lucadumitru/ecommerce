@@ -15,10 +15,10 @@ const LaptopsPage = async () => {
   const brands = (await gql.getBrands()).brands.data.map((brand) => brand.attributes.title);
 
   return (
-    <Container className="flex gap-2">
+    <Container className="flex flex-col gap-2 laptop:flex-row">
       <FilterSection
         brands={brands}
-        className="max-w-[300px]"
+        className="w-full laptop:max-w-[300px]"
         endPrice={maxPrice}
         startPrice={minPrice}
       />
